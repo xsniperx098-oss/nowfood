@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="432" height="200" viewBox="0 0 216 100">
+  <rect width="216" height="100" fill="#fafaf1"/>
+  <g fill="none" stroke="#07521b" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-width="3.5" d="M82 49c-9 0-15-5-15-12 0-7 6-12 13-12 3-7 9-10 16-9 6 1 10 5 12 10 8-3 16 1 17 8 1 6-4 12-10 13"/>
+    <path stroke-width="3" d="M83 48c8 7 28 9 42 2"/>
+    <path stroke-width="3" d="M64 43l-8-5m4 11-10-1m8 8-9 2m101-18 7-5m-5 13 10-2m-8 9 8 2"/>
+  </g>
+  <text x="42" y="66" font-family="Arial, sans-serif" font-size="30" font-weight="900" font-style="italic" fill="#07521b">now</text>
+  <text x="88" y="66" font-family="Arial, sans-serif" font-size="30" font-weight="900" font-style="italic" fill="#38b000">food</text>
+  <path d="M72 72c22 17 58 17 82-1" fill="none" stroke="#38b000" stroke-width="5" stroke-linecap="round"/>
+  <g fill="none" stroke="#07521b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M176 62h22l6 5h6l3 7h-3m-34-1h-3m13-9 3-7h10l6 7m-18 2h11"/>
+    <circle cx="180" cy="75" r="4"/><circle cx="202" cy="75" r="4"/>
+    <path d="M184 61c0-4 3-7 7-7h5l4 5m-14-3-3-4m11 0h6m-30 13-5 1"/>
+  </g>
+  <path d="M13 79l23-2M25 86l12-1M17 69l18-2" stroke="#38b000" stroke-width="3" stroke-linecap="round"/>
+</svg>
