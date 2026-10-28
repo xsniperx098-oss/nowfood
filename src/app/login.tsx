@@ -1,4 +1,5 @@
 import { Image } from 'expo-image';
+import { router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import {
@@ -10,6 +11,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
+import { AppBottomNav } from '../components/app-bottom-nav';
 
 const GREEN = '#32b600';
 const DARK_GREEN = '#073f17';
@@ -24,14 +26,15 @@ export default function LoginScreen() {
     Alert.alert('Nowfood', `O login com ${service} será configurado depois.`);
 
   return (
+    <View style={styles.screen}>
     <ScrollView
-      style={styles.screen}
+      style={styles.scroll}
       contentContainerStyle={styles.content}
       keyboardShouldPersistTaps="handled">
       <StatusBar hidden />
 
       <Image
-        source={require('@/assets/images/nowfood-logo.png')}
+        source={require('../../assets/minhas-imagens/logo.png')}
         contentFit="contain"
         style={styles.logo}
         accessibilityLabel="Nowfood"
@@ -88,7 +91,7 @@ export default function LoginScreen() {
             </View>
             <Text style={styles.optionText}>Lembrar de mim</Text>
           </Pressable>
-          <Pressable onPress={() => showUnavailableMessage('a recuperação de senha')}>
+          <Pressable onPress={() => router.push('/recuperar-senha')}>
             <Text style={styles.optionText}>Esqueceu sua senha?</Text>
           </Pressable>
         </View>
@@ -108,9 +111,9 @@ export default function LoginScreen() {
       </View>
 
       <View style={styles.socialButtons}>
-        <SocialButton icon="G" label="Entrar com Google" color="#4285f4" onPress={() => showUnavailableMessage('Google')} />
-        <SocialButton icon="f" label="Entrar com Facebook" color="#1877f2" onPress={() => showUnavailableMessage('Facebook')} />
-        <SocialButton icon="●" label="Entrar com Apple" color="#111111" onPress={() => showUnavailableMessage('Apple')} />
+        <SocialButton icon={require('../../assets/minhas-imagens/google-sem-fundo.png')} label="Entrar com Google" onPress={() => showUnavailableMessage('Google')} />
+        <SocialButton icon={require('../../assets/minhas-imagens/facebook.png')} label="Entrar com Facebook" onPress={() => showUnavailableMessage('Facebook')} />
+        <SocialButton icon={require('../../assets/minhas-imagens/maça.png')} label="Entrar com Apple" onPress={() => showUnavailableMessage('Apple')} />
       </View>
 
       <View style={styles.signupDivider} />
@@ -122,20 +125,21 @@ export default function LoginScreen() {
         <Text style={styles.signupButtonText}>Criar conta</Text>
       </Pressable>
     </ScrollView>
+    <AppBottomNav />
+    </View>
   );
 }
 
 type SocialButtonProps = {
-  color: string;
-  icon: string;
+  icon: number;
   label: string;
   onPress: () => void;
 };
 
-function SocialButton({ color, icon, label, onPress }: SocialButtonProps) {
+function SocialButton({ icon, label, onPress }: SocialButtonProps) {
   return (
     <Pressable accessibilityRole="button" style={styles.socialButton} onPress={onPress}>
-      <Text style={[styles.socialIcon, { color }]}>{icon}</Text>
+      <Image source={icon} contentFit="contain" style={styles.socialIcon} />
       <Text style={styles.socialButtonText}>{label}</Text>
     </Pressable>
   );
@@ -146,16 +150,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fafaf1',
   },
+  scroll: { flex: 1 },
   content: {
     flexGrow: 1,
     alignItems: 'center',
     paddingHorizontal: 32,
-    paddingTop: 64,
+    paddingTop: 38,
     paddingBottom: 18,
   },
   logo: {
     width: 240,
-    height: 112,
+    height: 140,
   },
   title: {
     marginTop: 26,
@@ -180,7 +185,7 @@ const styles = StyleSheet.create({
   },
   emailBox: {
     borderWidth: 2,
-    borderColor: '#00a8ff',
+    borderColor: GREEN,
     paddingHorizontal: 10,
   },
   inputIcon: {
@@ -279,8 +284,8 @@ const styles = StyleSheet.create({
   socialIcon: {
     position: 'absolute',
     left: 26,
-    fontSize: 18,
-    fontWeight: '800',
+    width: 24,
+    height: 24,
   },
   socialButtonText: {
     color: '#101010',
