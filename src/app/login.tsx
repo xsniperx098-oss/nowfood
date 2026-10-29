@@ -15,6 +15,8 @@ import { AppBottomNav } from '../components/app-bottom-nav';
 
 const GREEN = '#32b600';
 const DARK_GREEN = '#073f17';
+const DEMO_EMAIL = 'teste@gmail.com';
+const DEMO_PASSWORD = '123';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
@@ -24,6 +26,18 @@ export default function LoginScreen() {
 
   const showUnavailableMessage = (service: string) =>
     Alert.alert('Nowfood', `O login com ${service} será configurado depois.`);
+
+  const handleLogin = () => {
+    const validEmail = email.trim().toLowerCase() === DEMO_EMAIL;
+    const validPassword = password === DEMO_PASSWORD;
+
+    if (validEmail && validPassword) {
+      router.replace('/perfil');
+      return;
+    }
+
+    Alert.alert('Não foi possível entrar', 'Confira o e-mail e a senha.');
+  };
 
   return (
     <View style={styles.screen}>
@@ -99,7 +113,7 @@ export default function LoginScreen() {
         <Pressable
           accessibilityRole="button"
           style={styles.loginButton}
-          onPress={() => showUnavailableMessage('sua conta')}>
+          onPress={handleLogin}>
           <Text style={styles.loginButtonText}>Entrar</Text>
         </Pressable>
       </View>
@@ -121,7 +135,7 @@ export default function LoginScreen() {
       <Pressable
         accessibilityRole="button"
         style={styles.signupButton}
-        onPress={() => showUnavailableMessage('a criação de conta')}>
+        onPress={() => router.push('/cadastro')}>
         <Text style={styles.signupButtonText}>Criar conta</Text>
       </Pressable>
     </ScrollView>

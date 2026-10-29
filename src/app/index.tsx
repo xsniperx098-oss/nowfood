@@ -29,31 +29,45 @@ const categories = [
 
 const restaurants = [
   {
-    name: 'Hamburguer Artesanal',
-    description: 'Gourmet lanches',
-    price: 'R$ 24,90',
+    name: 'Gourmet Lanches',
+    description: 'Hambúrguer · Lanches',
+    price: 'R$ 15,00',
     rating: '4,8',
     image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=700&auto=format&fit=crop&q=85',
   },
   {
-    name: 'Pizza Calabresa',
-    description: 'Pizzaria top',
-    price: 'R$ 57,90',
+    name: 'Pizzaria Top',
+    description: 'Pizza · Massas',
+    price: 'R$ 40,00',
     rating: '4,9',
-    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=700&auto=format&fit=crop&q=85',
+    image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=700&auto=format&fit=crop&q=85',
   },
   {
-    name: 'Combinado',
-    description: 'Sushi especial',
-    price: 'R$ 59,90',
+    name: 'Sushi Expresso',
+    description: 'Japonesa · Sushi',
+    price: 'R$ 45,00',
     rating: '4,7',
     image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=700&auto=format&fit=crop&q=85',
+  },
+  {
+    name: 'Açaí e Cia',
+    description: 'Açaí · Sobremesas',
+    price: 'R$ 22,00',
+    rating: '4,8',
+    image: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?w=700&auto=format&fit=crop&q=85',
+  },
+  {
+    name: 'Bebidas Geladas',
+    description: 'Bebidas · Refrigerantes',
+    price: 'R$ 15,00',
+    rating: '4,6',
+    image: 'https://images.unsplash.com/photo-1554866585-cd94860890b7?w=700&auto=format&fit=crop&q=85',
   },
 ];
 
 function CategoryItem({ item }: { item: (typeof categories)[number] }) {
   return (
-    <TouchableOpacity style={styles.categoryItem} activeOpacity={0.8}>
+    <TouchableOpacity style={styles.categoryItem} activeOpacity={0.8} onPress={() => router.push({ pathname: '/explorar', params: { category: item.name } })}>
       <View style={styles.categoryIcon}>
         <Image source={item.icon} style={styles.categoryImage} resizeMode="contain" />
       </View>
@@ -64,7 +78,7 @@ function CategoryItem({ item }: { item: (typeof categories)[number] }) {
 
 function RestaurantCard({ item }: { item: (typeof restaurants)[number] }) {
   return (
-    <TouchableOpacity style={styles.restaurantCard} activeOpacity={0.9}>
+    <TouchableOpacity style={styles.restaurantCard} activeOpacity={0.9} onPress={() => router.push({ pathname: '/restaurante', params: { name: item.name, category: item.description } })}>
       <View>
         <Image source={{ uri: item.image }} style={styles.foodImage} />
         <View style={styles.rating}><Text style={styles.ratingText}>★ {item.rating}</Text></View>
@@ -83,8 +97,8 @@ export default function App() {
       <View style={styles.screen}>
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
           <View style={styles.header}>
-            <Image source={require('../../assets/minhas-imagens/logo.png')} style={styles.logo} resizeMode="contain" />
-            <TouchableOpacity style={styles.notification} onPress={() => router.push('/login')}>
+          <Image source={require('../../assets/minhas-imagens/logo.png')} style={styles.logo} resizeMode="contain" />
+            <TouchableOpacity style={styles.notification} accessibilityRole="button" accessibilityLabel="Notificações" onPress={() => router.push({ pathname: '/perfil/[secao]', params: { secao: 'notificacoes' } })}>
               <View style={styles.bellIcon}>
                 <View style={styles.bellClapper} />
               </View>
@@ -135,7 +149,7 @@ const styles = StyleSheet.create({
   searchIcon: { fontSize: 21, color: '#111', marginRight: 8 },
   searchInput: { flex: 1, height: '100%', fontSize: 14, paddingVertical: 0, color: DARK },
   bannerContainer: { height: (Dimensions.get('window').width - 10) / PROMO_ASPECT_RATIO, marginHorizontal: 5, marginBottom: 25, overflow: 'hidden', backgroundColor: '#160A0A' },
-  bannerImage: { ...StyleSheet.absoluteFillObject, width: '100%', height: '100%' },
+  bannerImage: { ...StyleSheet.absoluteFill, width: '100%', height: '100%' },
   sectionHeader: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12, marginBottom: 12 },
   sectionTitle: { color: DARK, fontSize: 20, fontWeight: '900' },
   categories: { flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 11, marginBottom: 23 },
