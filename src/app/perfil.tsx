@@ -42,6 +42,14 @@ export default function ProfileScreen() {
         <Pressable style={styles.utilityCard} onPress={() => openSection('ajuda')}>
           <SymbolView name={{ ios: 'questionmark.circle.fill', android: 'help', web: 'help' }} size={23} tintColor="#111" /><View style={styles.utilityCopy}><Text style={styles.utilityTitle}>Ajuda</Text><Text style={styles.utilitySubtitle}>Fale com a gente caso tenha qualquer dúvida.</Text></View>
         </Pressable>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Sair da conta"
+          style={[styles.utilityCard, styles.logoutCard]}
+          onPress={() => router.replace('/login')}>
+          <SymbolView name={{ ios: 'rectangle.portrait.and.arrow.right', android: 'logout', web: 'logout' }} size={22} tintColor="#b42318" />
+          <Text style={styles.logoutTitle}>Sair da conta</Text>
+        </Pressable>
       </ScrollView>
       <AppBottomNav />
     </SafeAreaView>
@@ -66,4 +74,6 @@ const styles = StyleSheet.create({
   utilityCopy: { flex: 1 },
   utilityTitle: { color: '#111', fontSize: 12, fontWeight: '800' },
   utilitySubtitle: { color: '#555', fontSize: 9, marginTop: 2 },
+  logoutCard: { minHeight: 50, marginTop: 2, marginBottom: 12 },
+  logoutTitle: { color: '#b42318', fontSize: 12, fontWeight: '800' },
 });

@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   intro: { color: '#111', fontSize: 17, lineHeight: 22, fontWeight: '800', textAlign: 'center', marginTop: 6 },
   form: { width: '100%', marginTop: 28 },
   label: { color: '#111', fontSize: 13, fontWeight: '800', marginLeft: 10, marginBottom: 6 },
-  input: { height: 44, borderWidth: 1, borderColor: '#777', borderRadius: 8, backgroundColor: '#d7d7d7', paddingHorizontal: 12, textAlign: 'center', color: '#111', fontSize: 13, fontWeight: '700', paddingVertical: 0 },
+  input: { height: 44, borderWidth: 1, borderColor: '#c8c8c8', borderRadius: 8, backgroundColor: '#f2f2f2', paddingHorizontal: 12, textAlign: 'center', color: '#111', fontSize: 13, fontWeight: '700', paddingVertical: 0 },
   passwordLabel: { marginTop: 14 },
   or: { color: '#111', fontSize: 14, fontWeight: '700', marginTop: 9, marginBottom: 10 },
   googleButton: { width: 205, height: 40, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: '#555', borderRadius: 8, backgroundColor: 'transparent' },

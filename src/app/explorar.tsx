@@ -16,9 +16,12 @@ const categories = ['Todos', 'Hambúrguer', 'Pizza', 'Japonesa', 'Açaí', 'Bebi
 const normalize = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR').trim();
 
 export default function ExploreScreen() {
-  const params = useLocalSearchParams<{ category?: string }>();
+  const params = useLocalSearchParams<{ category?: string; query?: string }>();
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('Todos');
+  useEffect(() => {
+    setQuery(typeof params.query === 'string' ? params.query : '');
+  }, [params.query]);
   useEffect(() => {
     const requested = typeof params.category === 'string' ? params.category : '';
     const target = requested.toLowerCase() === 'lanches' ? 'Hambúrguer' : requested;

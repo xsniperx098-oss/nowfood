@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import {
@@ -91,6 +91,9 @@ function RestaurantCard({ item }: { item: (typeof restaurants)[number] }) {
 }
 
 export default function App() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const openSearch = () => router.push({ pathname: '/explorar', params: { query: searchQuery.trim() } });
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar style="dark" />
@@ -109,7 +112,8 @@ export default function App() {
           <View style={styles.searchContainer}>
             <Text style={styles.searchIcon}>⌕</Text>
             <TextInput placeholder="Buscar por restaurantes, pratos..." placeholderTextColor="#111111"
-              style={styles.searchInput} returnKeyType="search" />
+              style={styles.searchInput} value={searchQuery} onChangeText={setSearchQuery}
+              returnKeyType="search" onSubmitEditing={openSearch} />
           </View>
 
           <TouchableOpacity style={styles.bannerContainer} activeOpacity={0.92}>
